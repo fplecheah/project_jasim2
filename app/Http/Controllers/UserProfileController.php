@@ -35,6 +35,11 @@ class UserProfileController extends Controller
                 'validate_err'=> $validator->messages(),
             ]);
         }
+        $catchData = $request->only('name', 'email',);
+        if($catchData){
+            $user = User::find($id);
+            $user->update($catchData);
+        }
         foreach($request->user_settings as $item){
             $setting_table_id = $item['id'];
             unset($item['id']);

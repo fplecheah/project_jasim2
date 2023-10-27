@@ -20,7 +20,7 @@ class AuthController extends Controller
             ],401);
            }
 
-           $user = User::where('email',$request->email)->first();
+           $user = Auth::user();
            return response()->json([
             "status"=>'success',
             'message'=>'successfully logged in',
